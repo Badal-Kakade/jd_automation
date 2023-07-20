@@ -154,7 +154,7 @@ const Form = ({handlePageTemplate}) => {
                 <Grid item>
                     <Typography className='formLabel'>Role Description</Typography>
                     <TextField name='position_role' value={positionData.position_role} 
-                    onChange={getFormData} className='txtbox' id="standard-basic" inputProps={{ maxLength: 250 }}
+                    onChange={getFormData} className='txtbox' id="standard-basic" inputProps={{ maxLength: 500 }}
                     placeholder='About the role' autoComplete='off' variant="outlined" />
                 </Grid>
                 
