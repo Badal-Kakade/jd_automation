@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/jd_automation/static/css/main.5ee51e0d.css",
+    "main.js": "/jd_automation/static/js/main.0ae3e3b9.js",
+    "static/js/498.1350dca0.chunk.js": "/jd_automation/static/js/498.1350dca0.chunk.js",
+    "static/js/703.a723f40b.chunk.js": "/jd_automation/static/js/703.a723f40b.chunk.js",
+    "static/js/617.a93af0be.chunk.js": "/jd_automation/static/js/617.a93af0be.chunk.js",
+    "static/js/787.64b67409.chunk.js": "/jd_automation/static/js/787.64b67409.chunk.js",
+    "static/media/annalect_logo.png": "/jd_automation/static/media/annalect_logo.470d04bdc755b0f74073.png",
+    "static/media/omni_logo.png": "/jd_automation/static/media/omni_logo.96f58815521cea564dfc.png",
+    "index.html": "/jd_automation/index.html",
+    "main.5ee51e0d.css.map": "/jd_automation/static/css/main.5ee51e0d.css.map",
+    "main.0ae3e3b9.js.map": "/jd_automation/static/js/main.0ae3e3b9.js.map",
+    "498.1350dca0.chunk.js.map": "/jd_automation/static/js/498.1350dca0.chunk.js.map",
+    "703.a723f40b.chunk.js.map": "/jd_automation/static/js/703.a723f40b.chunk.js.map",
+    "617.a93af0be.chunk.js.map": "/jd_automation/static/js/617.a93af0be.chunk.js.map",
+    "787.64b67409.chunk.js.map": "/jd_automation/static/js/787.64b67409.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ee51e0d.css",
+    "static/js/main.0ae3e3b9.js"
+  ]
+}
