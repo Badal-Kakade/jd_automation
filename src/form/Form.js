@@ -57,8 +57,20 @@ const Form = ({handlePageTemplate}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         localStorage.setItem('all_data', JSON.stringify(allData));
-    
-    
+
+        const isPositionDataValid = Object.values(positionData).every((value) => value !== '');
+        const isCityValid = city.location.length > 0;
+        const isExstngRoleValid = exstngRole.every((item) => item.roles !== '');
+        const isQuaRequValid = quaRequ.every((item) => item.q_n_R !== '');
+            if (!isPositionDataValid || !isExstngRoleValid || !isQuaRequValid) {
+                alert('Please fill all the required fields.');
+                return;
+            }
+            if (!isCityValid ) {
+                alert('Please Check At least one city');
+                return;
+            }
+        
         try {
           const newItem = {
             data: allData,
@@ -130,19 +142,19 @@ const Form = ({handlePageTemplate}) => {
                         <Typography className='formLabel'>Position</Typography>
                         <TextField name='position' value={positionData.position} onChange={getFormData} 
                         className='txtbox' id="standard-basic" placeholder='Ex-Grafics Designer' 
-                        variant="outlined" autoComplete='off' />
+                        variant="outlined" autoComplete='off' inputProps={{ maxLength: 25 }} />
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <Typography className='formLabel'>Sub-Position</Typography>
                         <TextField name='sub_position' value={positionData.sub_position} 
-                        onChange={getFormData} className='txtbox' id="standard-basic" 
+                        onChange={getFormData} className='txtbox' id="standard-basic" inputProps={{ maxLength: 35 }}
                         placeholder='Ex-Grafics Designer' variant="outlined" autoComplete='off' />
                     </Grid>
                 </Grid>
                 <Grid item>
                     <Typography className='formLabel'>Role Description</Typography>
                     <TextField name='position_role' value={positionData.position_role} 
-                    onChange={getFormData} className='txtbox' id="standard-basic" 
+                    onChange={getFormData} className='txtbox' id="standard-basic" inputProps={{ maxLength: 250 }}
                     placeholder='About the role' autoComplete='off' variant="outlined" />
                 </Grid>
                 
@@ -179,7 +191,7 @@ const Form = ({handlePageTemplate}) => {
                 </Grid>
                 <Grid item>
                     <Typography className='formLabel'>You will be working closely with</Typography>
-                    <TextField name='you_work_closely' value={positionData.you_work_closely} 
+                    <TextField name='you_work_closely' value={positionData.you_work_closely} inputProps={{ maxLength: 250 }}
                     onChange={getFormData} className='txtbox' id="standard-basic" autoComplete='off' 
                     placeholder='You will be working closely with' variant="outlined"/>
                 </Grid>
@@ -191,7 +203,7 @@ const Form = ({handlePageTemplate}) => {
                         <Grid container key={index}>
                             <TextField className='txtbox' id="standard-basic" value={singleRole.roles} 
                             name='roles' placeholder='How this role will help them in the future?' 
-                            onChange={(e) => handleRoleChange(e, index)} autoComplete='off'
+                            onChange={(e) => handleRoleChange(e, index)} autoComplete='off' inputProps={{ maxLength: 250 }}
                             variant="outlined" />
                             {exstngRole.length < 4 && <Typography className='icoStyle' variant='span'>
                                 <AddCircleOutline onClick={handleRoleAdd}/></Typography>}
@@ -206,7 +218,7 @@ const Form = ({handlePageTemplate}) => {
                     {bonusPoint.map((singleBonus, index) => (
                         <Grid container key={index}>
                             <TextField className='txtbox' id="standard-basic" value={singleBonus.b_point} name='b_point'
-                            placeholder='Having these will make them stand out.' autoComplete='off'
+                            placeholder='Having these will make them stand out.' autoComplete='off' inputProps={{ maxLength: 250 }}
                             onChange={(e) => handleBonusChange(e, index)} variant="outlined" />
                             {bonusPoint.length < 3 &&<Typography className='icoStyle' variant='span'><AddCircleOutline 
                             onClick={handleBonusAdd}/></Typography>}
@@ -220,7 +232,7 @@ const Form = ({handlePageTemplate}) => {
                         This may be the right role for you if you have</Typography>
                     {quaRequ.map((singleQ_n_R, index) => (
                         <Grid container key={index}>
-                            <TextField className='txtbox' id="standard-basic" value={singleQ_n_R.q_n_R} 
+                            <TextField className='txtbox' id="standard-basic" value={singleQ_n_R.q_n_R} inputProps={{ maxLength: 250 }} 
                             name='q_n_R' autoComplete='off' onChange={(e) => handleQ_n_RChange(e, index)}
                             placeholder='How this role will help them in the future?' variant="outlined" />
                             {quaRequ.length <6 && (<Typography className='icoStyle' variant='span'>
