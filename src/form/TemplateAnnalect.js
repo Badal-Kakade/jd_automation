@@ -35,7 +35,7 @@ const TemplateAnnalect = ({handlePageForm}) => {
                 }
             }
         }).then(() => {
-            report.save('report.pdf');
+            report.save('Annalect India Job Description - ' + nwPositionData.position);
         });
     };
 
@@ -60,10 +60,13 @@ const TemplateAnnalect = ({handlePageForm}) => {
         </Grid>
         <Grid container className='locSec'>
             <Grid item xs={6} md={6} className='jdsec'>
-                <Typography >Location :
-                    {nwCity.location.map((index) =>(
-                        <span>{index} \ </span>
-                    ))}
+                <Typography>Location:
+                {nwCity.location.map((index, i) => (
+                    <React.Fragment key={index}>
+                    <span>{index}</span>
+                    {i !== nwCity.location.length - 1 && <span> \ </span>}
+                    </React.Fragment>
+                ))}
                 </Typography>
                 <Typography >www.annalect.com/in</Typography>
             </Grid>

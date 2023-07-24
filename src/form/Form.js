@@ -14,11 +14,13 @@ const Form = ({handlePageTemplate}) => {
     const [bonusPoint, setBonusPoint] = useState([{b_point : ''}]);
     const [quaRequ, setQuaRequ] = useState([{q_n_R : ''}]);
     const [city, setCity] = useState({ location: [] });
+    const [showLocations, setShowLocations] = useState(true);
+    const [isAllLocChecked, setIsAllLocChecked] = useState(false);
     const [positionData , setpositionData] = useState({
         position:'',
-        sub_position:'',
+        // sub_position:'',
         position_role:'',
-        you_work_closely :''
+        // you_work_closely :''
       })
 
     
@@ -35,8 +37,23 @@ const Form = ({handlePageTemplate}) => {
       const getFormData = (event) =>{
         name = event.target.name;
         value = event.target.value;
-    
         setpositionData({...positionData, [name] : value })
+      }
+      const handlealloccheck = (e) => {
+        setIsAllLocChecked(e.target.checked);
+        setShowLocations(!e.target.checked);
+        const { value, checked } = e.target;
+        const { location } = city;
+        if (checked ) {
+            setCity({
+            location: [value]
+            });
+        }
+        else {
+            setCity({
+            location: location.filter((e) => e !== value)
+            });
+        }
       }
     const handlecheck = (e) => {
     const { value, checked } = e.target;
@@ -83,10 +100,6 @@ const Form = ({handlePageTemplate}) => {
         }
         handlePageTemplate();
       };
-
-
-
-
 
     const handleRoleChange = (e, index) => {
         const { name, value } = e.target;
@@ -137,7 +150,7 @@ const Form = ({handlePageTemplate}) => {
                 <Typography className='headTitle'>Job Description Maker</Typography>
             </div>
             <Box className='boxSec'>
-                <Grid container>
+                {/* <Grid container>
                     <Grid item xs={12} md={6}>
                         <Typography className='formLabel'>Position</Typography>
                         <TextField name='position' value={positionData.position} onChange={getFormData} 
@@ -150,6 +163,12 @@ const Form = ({handlePageTemplate}) => {
                         onChange={getFormData} className='txtbox' id="standard-basic" inputProps={{ maxLength: 35 }}
                         placeholder='Ex-Grafics Designer' variant="outlined" autoComplete='off' />
                     </Grid>
+                </Grid> */}
+                <Grid item>
+                        <Typography className='formLabel'>Position</Typography>
+                        <TextField name='position' value={positionData.position} onChange={getFormData} 
+                        className='txtbox' id="standard-basic" placeholder='Ex-Grafics Designer' 
+                        variant="outlined" autoComplete='off' inputProps={{ maxLength: 180 }} />
                 </Grid>
                 <Grid item>
                     <Typography className='formLabel'>Role Description</Typography>
@@ -161,6 +180,13 @@ const Form = ({handlePageTemplate}) => {
                 <Grid item>
                     <Typography className='formLabel'>Location</Typography>
                     <FormGroup>
+                        <Grid container>
+                            <Grid item xs={6} md={4}>
+                                <FormControlLabel value='All_Annalect_India_Office' onChange={handlealloccheck} 
+                                className='ckbox' control={<Checkbox checked={isAllLocChecked} />} label="All Annalect India Office" />
+                            </Grid>
+                        </Grid>
+                        {showLocations && (
                         <Grid container>
                             <Grid item xs={6} md={4}>
                                 <FormControlLabel value='Hyderabad' onChange={handlecheck} 
@@ -187,14 +213,15 @@ const Form = ({handlePageTemplate}) => {
                                 className='ckbox' control={<Checkbox />} label="Chennai" />
                             </Grid>
                         </Grid>
+                        )}
                     </FormGroup>
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                     <Typography className='formLabel'>You will be working closely with</Typography>
                     <TextField name='you_work_closely' value={positionData.you_work_closely} inputProps={{ maxLength: 250 }}
                     onChange={getFormData} className='txtbox' id="standard-basic" autoComplete='off' 
                     placeholder='You will be working closely with' variant="outlined"/>
-                </Grid>
+                </Grid> */}
                 
                 <Grid item>
                     <Typography className='formLabel'>
